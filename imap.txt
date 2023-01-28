@@ -1,0 +1,3 @@
+imapUsername:oko
+imapPassword:oko
+imapHost:kjl
