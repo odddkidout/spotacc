@@ -1,7 +1,0 @@
-Thread 0 error: Traceback (most recent call last):
-  File "C:\Users\pshar\OneDrive\Documents\botting\spotify login and email change\CHECKERDB v2.PY", line 225, in start
-    self.saveToDB(s.email, s.email+"cc", s.refreshToken)
-  File "C:\Users\pshar\OneDrive\Documents\botting\spotify login and email change\CHECKERDB v2.PY", line 271, in saveToDB
-    dbconfig =  json.loads(open('.\database.txt', "r").read())
-FileNotFoundError: [Errno 2] No such file or directory: '.\\database.txt'
-

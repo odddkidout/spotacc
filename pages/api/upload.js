@@ -16,7 +16,7 @@ export default async (req, res) => {
       if (err) return console.log(err); 
 
         const { exec, spawn } = require("child_process");
-        var command = `python "C:\\Users\\pshar\\OneDrive\\Documents\\botting\\spotify login and email change\\CHECKERDB v2.PY" --platform "Spotify" --file ".//data//acc//${datetime}.txt" --proxies ".//proxies.txt" --email "nk.vashisat@gmail.com"`
+        var command = `python ".\\checker\\CHECKERDB v2.PY" --platform "Spotify" --file ".//data//acc//${datetime}.txt" --proxies ".//proxies.txt" --email "nk.vashisat@gmail.com"`
         console.log(command)
         //exec(command).stdout.pipe(process.stdout);
         const result_inherited = spawn(command,[], { stdio: 'inherit',shell: true}); // will print as it's processing
