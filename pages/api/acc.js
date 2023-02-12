@@ -4,10 +4,11 @@ import acc from "@/models/acc";
 export default async (req, res) => {
     const conn = connectMongo();
     if (req.method === 'GET') {
-        const facc = await acc.findOne({});
+        const facc = await acc.findOne({"Working":true, "InUse":false});
         res.status(200).json({ facc});
     } else if (req.method === 'PUT') {
         const id = req.query;
+        console.log(id);
         const formdata = req.body;
         if ( id && formdata ) {
             await acc.findByIdAndUpdate(id, formdata);
