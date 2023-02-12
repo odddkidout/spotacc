@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import Styles from '../styles/Home.module.css';
 function TextFileReader() {
   const [file, setFile] = useState(null);
   const [fileContent, setFileContent] = useState('');
@@ -12,8 +12,7 @@ function TextFileReader() {
     // Create form data object to send file
     const formData = new FormData();
     formData.append('file', file);
-    console.log(formData);
-    console.log("hi");
+    
     // Send file to server
     const response = await fetch('api/upload/', {
       method: 'POST',
@@ -30,9 +29,11 @@ function TextFileReader() {
   };
 
   return (
-    <div>
+    <div className={Styles.form}>
+      <label>Upload a file:
       <input type="file" onChange={e => handleFileChosen(e.target.files[0])} />
-      <button onClick={handleFileUpload}>Upload</button>
+      </label>
+      <button onClick={handleFileUpload} className={Styles.item}>Upload</button>
       <div>
         {fileContent}
       </div>

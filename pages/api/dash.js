@@ -1,5 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import mongoose from "mongoose";
+
 import connectMongo from "../../lib/mongodb";
 import acc from "@/models/acc";
 
@@ -8,7 +8,7 @@ import acc from "@/models/acc";
 
 export default async (req, res) => {
   if (req.method === 'GET') {
-    const conn = connectMongo();
+    const conn = await connectMongo();
     const TotalAcc = await acc.countDocuments({});
     const Alive = await acc.countDocuments({Working: true});
     const InUse = await acc.countDocuments({InUse: true});
