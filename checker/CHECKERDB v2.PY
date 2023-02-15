@@ -1,14 +1,8 @@
 import random, string
-import os
 from time import sleep
-from urllib import request
-import pyfiglet
-from PyInquirer import prompt
-import tkinter.filedialog
 from requests import session
 import database
 from modules import Spotify
-import requests
 from threading import Thread,Lock
 import datetime
 from helper import log,get_traceback
@@ -27,8 +21,6 @@ class bcolors:
 
 class Resetter():
     def __init__(self,platform=None,  protocol=None, accounts=None, threads=None, email=None,proxies=None) -> None:
-        self.heading =pyfiglet.Figlet(font="speed").renderText("Speed")[:-25] + "Made with ❤  by oko"
-        "*\log(-1,self.heading)\*"
         self.proxies = None
         self.thread = 0
         self.Total = 0
@@ -75,19 +67,6 @@ class Resetter():
             self.protocol = protocol
             self.minecraft(True)
         else:   
-            questions = [
-                {
-                    'type': 'list',
-                    'name': 'Menu',
-                    'message': 'Choose Module',
-                    'choices' : [
-                        'Spotify',
-                    ]
-                }
-            ]
-            answers = prompt(questions)
-
-            if answers['Menu'] == 'Spotify' :
                 self.minecraft()
 
     def updateproxy(self):
@@ -103,63 +82,6 @@ class Resetter():
         return next(self.combosdict)
 
     def minecraft(self, bash=False):
-        
-        if not bash:
-            log(-1, "in bash if")
-            while self.combos == None:
-                log(-1,f'{bcolors.OKGREEN}Please select a combo file{bcolors.ENDC}')
-                self.combos = tkinter.filedialog.askopenfilenames()
-            log(-1,f'Loading combos from {self.combos[0]}')
-
-            with open(self.combos[0],'r',encoding="utf8") as file:
-                data = file.readlines()
-                self.combosdict = iter(data)
-                self.combosize = len(data)
-            log(-1,f'Loaded {self.combosize} combos')
-
-
-            if(input('Wanna use proxies (y/n)').lower()=='y'):
-                self.proxies = True
-                proxies = tkinter.filedialog.askopenfilenames()
-                questions = [
-                    {
-                        'type': 'list',
-                        'name': 'Menu',
-                        'message': 'Choose proxies format',
-                        'choices' : [
-                            'HTTP',
-                            'SOCKS4',
-                            'SOCKS5'
-                        ]
-                    }
-                ]
-                answers = prompt(questions)
-            else:
-                proxies = None
-                self.proxies = False
-
-            if proxies:
-                log(-1,f'Loading proxies from {proxies}')
-                with open(proxies[0],'r') as file:
-                    self.proxydata = file.readlines()
-                    self.proxydict = iter(self.proxydata)
-                    self.proxysize = len(data)
-                
-            else:
-                self.proxies = False
-                self.proxydict = None
-                self.proxysize = 0
-            log(-1,f'Loaded {(self.proxysize)} proxies')
-
-            self.threads = int(input('Enter threads you want to run:'))
-            if input('Do you want to change email (y/n)').lower() == 'y':
-                self.newemail = input('Enter new email: ')
-            else:
-                self.newemail = False
-        else:
-            pass
-            
-
         i=0
         for i in range(self.threads):
             self.starttime = datetime.datetime.now()

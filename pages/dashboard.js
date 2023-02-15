@@ -22,7 +22,7 @@ const dashboard = () => {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            fetch('http://localhost:3000/api/dash') 
+            fetch('http://127.0.0.1:3000/api/dash') 
             .then(res => res.json())
             .then(data => setData(data));
         }, 1000);

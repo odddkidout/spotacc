@@ -1,8 +1,3 @@
-from ast import Delete
-import email
-from enum import unique
-
-from logging import exception
 import pymongo
 from pymongo import MongoClient
 

@@ -1,0 +1,6 @@
+blackboxprotobuf==1.0.1
+httpx==0.23.0
+protobuf==4.21.12
+protobuf_to_dict==0.1.0
+pymongo==4.2.0
+requests==2.28.1
