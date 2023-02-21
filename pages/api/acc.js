@@ -5,6 +5,11 @@ export default async (req, res) => {
     const conn = connectMongo();
     if (req.method === 'GET') {
         const facc = await acc.findOne({"Working":true, "InUse":false});
+        if (facc) {
+            facc.InUse = true;
+            await facc.save();
+        }
+        
         res.status(200).json({ facc});
     } else if (req.method === 'PUT') {
         const id = req.query;
