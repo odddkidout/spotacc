@@ -22,7 +22,7 @@ const AccSchema = new mongoose.Schema({
 
     type: String,
     required: [true, 'Please specify the token for this acc'],
-    maxlength: [200, 'token specified cannot be more than 200 characters'],
+    maxlength: [300, 'token specified cannot be more than 200 characters'],
   },
   InUse: {
     /* Pet's age, if applicable */
